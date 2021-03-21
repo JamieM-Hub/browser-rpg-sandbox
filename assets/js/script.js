@@ -218,6 +218,7 @@ $(document).ready(function () {
         this.currentLocation = farm_insideBarn
         this.currentNPC = farmerJoe
         this.nextParagraph = ""
+        this.narratorResponse = "Welcome!"
     }
 
     // CREATE OBJECT FUNCTIONS
@@ -284,17 +285,22 @@ $(document).ready(function () {
     // COMMAND READER
     processCommand = () => {
         let command = $("#command").val().toLowerCase()
-        console.log(command.toLowerCase() + " processed")
+
+        if (player.currentLocation.navigation[command] != null) {
+            display.narratorResponse = player.currentLocation.navigation[command]
+        }
+
         if (command == "door") {
-            if (player.currentLocation = farm_insideBarn) {
-                display.nextParagraph = "you left the barn"
+            if (player.currentLocation == farm_insideBarn) {
                 changeLocation(farm_outsideBarn)
-            } else if (player.currentLocation = farm_outsideBarn) {
-                display.nextParagraph = "you entered the barn"
+            } else if (player.currentLocation == farm_outsideBarn) {
+                display.narratorResponse = "you entered the barn"
                 changeLocation(farm_insideBarn)
             }
-
         }
+
+
+        updateDisplay()
     }
 
     // https://www.tutorialspoint.com/How-to-fire-after-pressing-ENTER-in-text-input-with-HTML
@@ -400,6 +406,7 @@ $(document).ready(function () {
             $("#NPC-level").text("Level " + player.currentNPC.level)
         }
         $("#spoken-text").text(display.nextParagraph)
+        $("#narrator").text(display.narratorResponse)
 
         $("#left-hand").find("img").attr("src", player.equipped["left-hand"].img)
         $("#right-hand").find("img").attr("src", player.equipped["right-hand"].img)
