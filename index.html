@@ -13,10 +13,10 @@
 </head>
 
 <body class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-center">
 
         <!--left column-->
-        <div class="col-3 left-display">
+        <div class="col-2 display" id="left-display">
 
             <!--menu button (left top)-->
             <div class="row justify-content-center" id="menu">
@@ -25,69 +25,71 @@
                 </div>
             </div>
 
-            <!--location data (left center)-->
-            <div class="row" id="location">
-                <!--location.city-->
-                <div class="col-12 location-data">
-                    <h3>location.city</h3>
+            <div class="bg">
+                <!--location data (left center)-->
+                <div class="row" id="location">
+                    <!--location.city-->
+                    <div class="col-12 location-data">
+                        <h3>location.city</h3>
+                    </div>
+                    <!--location.clout-->
+                    <div class="col-12 location-data">
+                        <h3>location.clout</h3>
+                    </div>
+                    <!--location.image-->
+                    <div class="col-12 location-data">
+                        <img src="" alt="location image">
+                    </div>
+                    <!--location.town-->
+                    <div class="col-12 location-data">
+                        <h3>location.town</h3>
+                    </div>
+                    <!--location.area-->
+                    <div class="col-12 location-data">
+                        <h3>location.area</h3>
+                    </div>
                 </div>
-                <!--location.clout-->
-                <div class="col-12 location-data">
-                    <h3>location.clout</h3>
-                </div>
-                <!--location.image-->
-                <div class="col-12 location-data">
-                    <img src="" alt="location image">
-                </div>
-                <!--location.town-->
-                <div class="col-12 location-data">
-                    <h3>location.town</h3>
-                </div>
-                <!--location.area-->
-                <div class="col-12 location-data">
-                    <h3>location.area</h3>
-                </div>
-            </div>
 
-            <!--player data (left bottom)-->
-            <div class="row" id="player">
-                <!--player.image-->
-                <div class="col-12 player-data">
-                    <img src="" alt="player image">
-                </div>
-                <!--player.name-->
-                <div class="col-12 player-data">
-                    <h3>player.name</h3>
-                </div>
-                <!--player.level-->
-                <div class="col-12 player-data">
-                    <h3>player.level</h3>
-                </div>
-                <!--player.XP-->
-                <div class="col-12 player-data">
-                    <h3>
-                        <span id="currentXP">currentXP</span>
-                        <span class="divider"> / </span>
-                        <span id="XPtoNext">XPtoNext</span>
-                    </h3>
-                </div>
-                <!--player.race-->
-                <div class="col-12 player-data">
-                    <h3>player.race</h3>
-                </div>
-                <!--player.class-->
-                <div class="col-12 player-data">
-                    <h3>player.class</h3>
-                </div>
-                <!--player.blessing-->
-                <div class="col-12 player-data">
-                    <h3>player.blessing</h3>
+                <!--player data (left bottom)-->
+                <div class="row" id="player">
+                    <!--player.image-->
+                    <div class="col-12 player-data">
+                        <img src="" alt="player image">
+                    </div>
+                    <!--player.name-->
+                    <div class="col-12 player-data">
+                        <h3>player.name</h3>
+                    </div>
+                    <!--player.level-->
+                    <div class="col-12 player-data">
+                        <h3>player.level</h3>
+                    </div>
+                    <!--player.XP-->
+                    <div class="col-12 player-data">
+                        <h3>
+                            <span id="currentXP">currentXP</span>
+                            <span class="divider"> / </span>
+                            <span id="XPtoNext">XPtoNext</span>
+                        </h3>
+                    </div>
+                    <!--player.race-->
+                    <div class="col-12 player-data">
+                        <h3>player.race</h3>
+                    </div>
+                    <!--player.class-->
+                    <div class="col-12 player-data">
+                        <h3>player.class</h3>
+                    </div>
+                    <!--player.blessing-->
+                    <div class="col-12 player-data">
+                        <h3>player.blessing</h3>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!--center column-->
-        <div class="col-6 center-display">
+        <div class="col-7 display" id="center-display">
 
             <!--location background area (center top)-->
             <div class="row justify-content-center">
@@ -97,7 +99,7 @@
             </div>
 
             <!--player options (center bottom)-->
-            <div class="row justify-content-center">
+            <div class="row bg justify-content-center">
 
                 <!--NPC image-->
                 <div class="col-3">
@@ -143,7 +145,7 @@
         </div>
 
         <!--right column-->
-        <div class="col-3 right-display">
+        <div class="col-2 display" id="right-display">
 
             <!--inventory button (right top)-->
             <div class="row justify-content-center" id="inventory">
@@ -152,137 +154,139 @@
                 </div>
             </div>
 
-            <!--battle stats (right center top)-->
-            <div class="row justify-content-center" id="battle-stats">
+            <div class="bg">
 
-                <!--health-->
-                <div class="col-12" id="health">
-                    <div class="row">
-                        <div class="col-3 health-icon"><i class="fas fa-heart"></i></div>
-                        <div class="col-3 health-icon"><i class="fas fa-heart"></i></div>
-                        <div class="col-3 health-icon"><i class="fas fa-heart"></i></div>
-                        <div class="col-3 health-icon"><i class="fas fas fa-heart-broken"></i></div>
+                <!--battle stats (right center top)-->
+                <div class="row display justify-content-center" id="battle-stats">
+
+                    <!--health-->
+                    <div class="col-12" id="health">
+                        <div class="row">
+                            <div class="col-3 health-icon"><i class="fas fa-heart"></i></div>
+                            <div class="col-3 health-icon"><i class="fas fa-heart"></i></div>
+                            <div class="col-3 health-icon"><i class="fas fa-heart"></i></div>
+                            <div class="col-3 health-icon"><i class="fas fas fa-heart-broken"></i></div>
+                        </div>
+                    </div>
+
+                    <!--status-->
+                    <div class="col-12" id="status">
+                        <div class="row justify-content-center">
+                            <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                            <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                            <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                            <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                            <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                            <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                        </div>
+                    </div>
+
+                    <!--attack-->
+                    <div class="col-12" id="attack">
+                        <div class="row stat justify-content-center">
+                            <div class="col-4 stat-icon"><i class="fas fa-crosshairs"></i></div>
+                            <div class="col-8 stat-value"><span>666</span></div>
+                        </div>
+                    </div>
+
+                    <!--defense-->
+                    <div class="col-12" id="defense">
+                        <div class="row stat justify-content-center">
+                            <div class="col-4 stat-icon"><i class="fas fas fa-shield-alt"></i></div>
+                            <div class="col-8 stat-value"><span>420</span></div>
+                        </div>
+                    </div>
+
+                    <!--speed-->
+                    <div class="col-12" id="speed">
+                        <div class="row stat justify-content-center">
+                            <div class="col-4 stat-icon"><i class="fas far fa-clock"></i></div>
+                            <div class="col-8 stat-value"><span>69</span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--equipment stats (right center bottom)-->
+                <div class="row display justify-content-center" id="equipment">
+
+                    <!--left hand-->
+                    <div class="col-6 equipped-item" id="left-hand">
+                        <button><img src="" alt="left hand"></button>
+                    </div>
+
+                    <!--right hand-->
+                    <div class="col-6 equipped-item" id="right-hand">
+                        <button><img src="" alt="right hand"></button>
+                    </div>
+
+                    <!--head-->
+                    <div class="col-6 equipped-item" id="head">
+                        <button><img src="" alt="head"></button>
+                    </div>
+
+                    <!--outfit-->
+                    <div class="col-6 equipped-item" id="outfit">
+                        <button><img src="" alt="outfit"></button>
+                    </div>
+
+                    <!--feet-->
+                    <div class="col-6 equipped-item" id="feet">
+                        <button><img src="" alt="feet"></button>
+                    </div>
+
+                    <!--trinket-->
+                    <div class="col-6 equipped-item" id="trinket">
+                        <button><img src="" alt="trinket"></button>
                     </div>
                 </div>
 
-                <!--status-->
-                <div class="col-12" id="status">
-                    <div class="row justify-content-center">
-                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
-                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
-                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
-                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
-                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
-                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                <!--perks (right bottom)-->
+                <div class="row justify-content-center" id="perks">
+
+                    <!--perk 1-->
+                    <div class="col-12 perk-button" id="perk1">
+                        <span class="perk-cooldown"><img src="" alt="timer"></span>
+                        <span class="cooldown-current">10</span>
+                        <button><span class="perk-text">perk 1</span></button>
+                    </div>
+
+                    <!--perk 2-->
+                    <div class="col-12 perk-button" id="perk2">
+                        <span class="perk-cooldown"><img src="" alt="timer"></span>
+                        <span class="cooldown-current">10</span>
+                        <button><span class="perk-text">perk 2</span></button>
+                    </div>
+
+                    <!--perk 3-->
+                    <div class="col-12 perk-button" id="perk3">
+                        <span class="perk-cooldown"><img src="" alt="timer"></span>
+                        <span class="cooldown-current">10</span>
+                        <button><span class="perk-text">perk 3</span></button>
+                    </div>
+
+                    <!--perk 4-->
+                    <div class="col-12 perk-button" id="perk4">
+                        <span class="perk-cooldown"><img src="" alt="timer"></span>
+                        <span class="cooldown-current">10</span>
+                        <button><span class="perk-text">perk 4</span></button>
+                    </div>
+
+                    <!--perk 5-->
+                    <div class="col-12 perk-button" id="perk5">
+                        <span class="perk-cooldown"><img src="" alt="timer"></span>
+                        <span class="cooldown-current">10</span>
+                        <button><span class="perk-text">perk 5</span></button>
+                    </div>
+
+                    <!--perk 6-->
+                    <div class="col-12 perk-button" id="perk6">
+                        <span class="perk-cooldown"><img src="" alt="timer"></span>
+                        <span class="cooldown-current">10</span>
+                        <button><span class="perk-text">perk 6</span></button>
                     </div>
                 </div>
-
-                <!--attack-->
-                <div class="col-12" id="attack">
-                    <div class="row stat justify-content-center">
-                        <div class="col-4 stat-icon"><i class="fas fa-crosshairs"></i></div>
-                        <div class="col-8 stat-value"><span>666</span></div>
-                    </div>
-                </div>
-
-                <!--defense-->
-                <div class="col-12" id="defense">
-                    <div class="row stat justify-content-center">
-                        <div class="col-4 stat-icon"><i class="fas fas fa-shield-alt"></i></div>
-                        <div class="col-8 stat-value"><span>420</span></div>
-                    </div>
-                </div>
-
-                <!--speed-->
-                <div class="col-12" id="speed">
-                    <div class="row stat justify-content-center">
-                        <div class="col-4 stat-icon"><i class="fas far fa-clock"></i></div>
-                        <div class="col-8 stat-value"><span>69</span></div>
-                    </div>
-                </div>
-
             </div>
-
-            <!--equipment stats (right center bottom)-->
-            <div class="row justify-content-center" id="equipment">
-
-                <!--left hand-->
-                <div class="col-6 equipped-item" id="left-hand">
-                    <button><img src="" alt="left hand"></button>
-                </div>
-
-                <!--right hand-->
-                <div class="col-6 equipped-item" id="right-hand">
-                    <button><img src="" alt="right hand"></button>
-                </div>
-
-                <!--head-->
-                <div class="col-6 equipped-item" id="head">
-                    <button><img src="" alt="head"></button>
-                </div>
-
-                <!--outfit-->
-                <div class="col-6 equipped-item" id="outfit">
-                    <button><img src="" alt="outfit"></button>
-                </div>
-
-                <!--feet-->
-                <div class="col-6 equipped-item" id="feet">
-                    <button><img src="" alt="feet"></button>
-                </div>
-
-                <!--trinket-->
-                <div class="col-6 equipped-item" id="trinket">
-                    <button><img src="" alt="trinket"></button>
-                </div>
-            </div>
-
-            <!--perks (right bottom)-->
-            <div class="row justify-content-center" id="perks">
-                
-                <!--perk 1-->
-                <div class="col-12 perk-button" id="perk1">
-                    <span class="perk-cooldown"><img src="" alt="timer"></span>
-                    <span class="cooldown-current">10</span>
-                    <button><span class="perk-text">perk 1</span></button>
-                </div>
-
-                <!--perk 2-->
-                <div class="col-12 perk-button" id="perk2">
-                    <span class="perk-cooldown"><img src="" alt="timer"></span>
-                    <span class="cooldown-current">10</span>
-                    <button><span class="perk-text">perk 2</span></button>
-                </div>
-
-                <!--perk 3-->
-                <div class="col-12 perk-button" id="perk3">
-                    <span class="perk-cooldown"><img src="" alt="timer"></span>
-                    <span class="cooldown-current">10</span>
-                    <button><span class="perk-text">perk 3</span></button>
-                </div>
-
-                <!--perk 4-->
-                <div class="col-12 perk-button" id="perk4">
-                    <span class="perk-cooldown"><img src="" alt="timer"></span>
-                    <span class="cooldown-current">10</span>
-                    <button><span class="perk-text">perk 4</span></button>
-                </div>
-
-                <!--perk 5-->
-                <div class="col-12 perk-button" id="perk5">
-                    <span class="perk-cooldown"><img src="" alt="timer"></span>
-                    <span class="cooldown-current">10</span>
-                    <button><span class="perk-text">perk 5</span></button>
-                </div>
-
-                <!--perk 6-->
-                <div class="col-12 perk-button" id="perk6">
-                    <span class="perk-cooldown"><img src="" alt="timer"></span>
-                    <span class="cooldown-current">10</span>
-                    <button><span class="perk-text">perk 6</span></button>
-                </div>
-            </div>
-
         </div>
 
 
