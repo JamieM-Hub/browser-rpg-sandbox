@@ -26,6 +26,62 @@ $(document).ready(function () {
         "Rusty Screw": "0.3"
     }, 5, "assets/img/enemies/farm-spider.png"]
 
+    // EQUIPMENT DATA
+    const SIMPLE_SWORD = [
+        "Simple Sword", "hand", 1, 5, "Brawn Over Brain",
+        [
+            "Double Slash",
+            "Triplet Slash",
+            "Quattro Formaggi Slash",
+            "Omni-Slash"
+        ], "assets/img/equipment/simple-sword.png"
+    ]
+    const SIMPLE_SHIELD = [
+        "Simple Shield", "hand", 1, 7, "DEFCON",
+        [
+            "Tank Mode",
+            "Turtle Mode",
+            "Juggernaut Mode",
+            "Havel Mode"
+        ], "assets/img/equipment/simple-shield.png"
+    ]
+    const CAMO_CAP = [
+        "Camo Cap", "head", 1, 2, "Streetwise",
+        [
+            "Snapback Cap",
+            "Upside Down Cap",
+            "Inside Out Cap",
+            "Balance On Head"
+        ], "assets/img/equipment/camo-cap.png"
+    ]
+    const TUXEDO = [
+        "Tuxedo", "body", 1, 3, "Cool Guy",
+        [
+            "Double Agent",
+            "00 Agent",
+            "007: James Bond",
+            "Sterling Archer"
+        ], "assets/img/equipment/tuxedo.png"
+    ]
+    const HERMES_BOOTS = [
+        "Hermes Boots", "feet", 1, 2, "Levitation",
+        [
+            "Hussain Bolt",
+            "Sonic The Hedgehog",
+            "Voyager-1",
+            "Mr Time"
+        ], "assets/img/equipment/hermes-boots.png"
+    ]
+    const BLUE_RING = [
+        "Blue Ring", "trinket", 1, 0, "Blue Mist",
+        [
+            "Uneasy Feeling",
+            "Weird Smell",
+            "Sweaty Palms",
+            "Demon Possession"
+        ], "assets/img/equipment/blue-ring.png"
+    ]
+
     // ITEM DATA
     const MILK_BOTTLE = ["Milk Bottle", 3, "potion", 20, 5, "assets/img/items/milk-bottle.png"]
 
@@ -53,6 +109,14 @@ $(document).ready(function () {
         this.perks = []
         this.currentLocation = farm_insideBarn
         this.currentNPC = farmerJoe
+        this.equipped = {
+            "left-hand": "",
+            "right-hand": "",
+            "head": "",
+            "body": "",
+            "feet": "",
+            "trinket": "",
+        }
     }
 
     // NPC OBJECTS
@@ -99,13 +163,9 @@ $(document).ready(function () {
         this.level = level
         this.modifier = modifier
         this.perk = perk
-        this.img
-        this.skills = {
-            "skill-1": "3",
-            "skill-2": "5",
-            "skill-3": "7",
-            "skill-4": "10"
-        }
+        this.skills = skills
+        this.img = img
+
     }
 
     // ITEM OBJECTS 
@@ -159,6 +219,17 @@ $(document).ready(function () {
         return new Enemy(name, race, job, level, HP, attack, defense, speed, loot, XP, img)
     }
 
+    createEquipmentObject = (equipment) => {
+        let name = equipment[0]
+        let slot = equipment[1]
+        let level = equipment[2]
+        let modifier = equipment[3]
+        let perk = equipment[4]
+        let skills = equipment[5]
+        let img = equipment[6]
+        return new Equipment(name, slot, level, modifier, perk, skills, img)
+    }
+
     createItemObject = (item) => {
         let name = item[0]
         let max = item[1]
@@ -169,7 +240,6 @@ $(document).ready(function () {
         return new Item(name, max, type, modifier, value, img)
     }
 
-
     let farm_insideBarn = new Location("Townston", "Townston Farm", "Inside Barn", "assets/img/locations/areas/farm_inside-barn.jpg")
     let beginnersLuck = new Perk("Beginner's Luck", 10, "beginnersLuck(player)", "whitesmoke")
     let bag = new Bag("LIDL bag", 10)
@@ -178,16 +248,20 @@ $(document).ready(function () {
     display.nextParagraph = farmerJoe.dialogue[0]
     var player = new Player("Siph", "Human", "Joiner", "Fish God Love", 666, 420, 69, "assets/img/player-image.jpg");
     var item = createItemObject(MILK_BOTTLE)
-
+    var simpleSword = createEquipmentObject(SIMPLE_SWORD)
+    var simpleShield = createEquipmentObject(SIMPLE_SHIELD)
+    var camoCap = createEquipmentObject(CAMO_CAP)
+    var tuxedo = createEquipmentObject(TUXEDO)
+    var hermesBoots = createEquipmentObject(HERMES_BOOTS)
+    var blueRing = createEquipmentObject(BLUE_RING)
 
     // FUNCTIONS
-
     showCommandInput = () => {
         $(".option-button > .d-none").removeClass("d-none")
     }
 
     perk1 = () => {
-        console.log("perk activated")
+        console.log("perk 1 activated")
     }
 
     // UPDATE DISPLAY
@@ -211,39 +285,48 @@ $(document).ready(function () {
         $("#NPC-race-class").text(player.currentNPC.race + " " + player.currentNPC.job)
         $("#NPC-level").text("Level " + player.currentNPC.level)
         $("#spoken-text").text(display.nextParagraph)
+
+        $("#left-hand").find("img").attr("src", player.equipped["left-hand"].img)
+        $("#right-hand").find("img").attr("src", player.equipped["right-hand"].img)
+        $("#head").find("img").attr("src", player.equipped["head"].img)
+        $("#body").find("img").attr("src", player.equipped["body"].img)
+        $("#feet").find("img").attr("src", player.equipped["feet"].img)
+        $("#trinket").find("img").attr("src", player.equipped["trinket"].img)
     }
 
     // RUN TIME CODE
-
-    console.log(farmerJoe)
+    player.equipped["left-hand"] = simpleSword
+    player.equipped["right-hand"] = simpleShield
+    player.equipped["head"] = camoCap
+    player.equipped["body"] = tuxedo
+    player.equipped["feet"] = hermesBoots
+    player.equipped["trinket"] = blueRing
     console.log(player)
     updateDisplay()
 
     // https://www.tutorialspoint.com/How-to-fire-after-pressing-ENTER-in-text-input-with-HTML
-    $('input').bind("Escape",function(e){
+    $('input').bind("Escape", function (e) {
         $("#command").addClass("d-none")
-     });
+    });
 
-     $('input').keyup(function(e){
-        if(e.keyCode == 27)
-        {
-           $(this).trigger("Escape");
+    $('input').keyup(function (e) {
+        if (e.keyCode == 27) {
+            $(this).trigger("Escape");
         }
-     });
+    });
 
-     $('input').bind("enterKey",function(e){
+    $('input').bind("enterKey", function (e) {
         var commandInput = $("#command").val()
         //$("#command").attr("type", "reset")
         console.log(commandInput)
         $("#command").addClass("d-none")
-     });
+    });
 
-     $('input').keyup(function(e){
-        if(e.keyCode == 13)
-        {
-           $(this).trigger("enterKey");
+    $('input').keyup(function (e) {
+        if (e.keyCode == 13) {
+            $(this).trigger("enterKey");
         }
-     });
+    });
 
 
 
