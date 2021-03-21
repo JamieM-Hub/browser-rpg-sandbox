@@ -31,21 +31,14 @@
                         <img alt="location image">
                     </div>
                     <!--location.city-->
-                    <div class="col-12 location-data location-city">
+                    <div class="col-12 location-data location-name">
                         <span>location.city</span>
                     </div>
                     <!--location.clout-->
                     <div class="col-12 location-data location-clout">
                         <span>location.clout</span>
                     </div>
-                    <!--location.town-->
-                    <div class="col-12 location-data location-town">
-                        <span>location.town</span>
-                    </div>
-                    <!--location.area-->
-                    <div class="col-12 location-data location-area">
-                        <span>location.area</span>
-                    </div>
+
                 </div>
 
                 <!--player data (left bottom)-->
@@ -73,10 +66,6 @@
                     <!--player.race-->
                     <div class="col-12 player-data player-race">
                         <span>player.race</span>
-                    </div>
-                    <!--player.class-->
-                    <div class="col-12 player-data player-job">
-                        <span>player.class</span>
                     </div>
                     <!--player.blessing-->
                     <div class="col-12 player-data player-blessing">
@@ -135,20 +124,22 @@
                         </div>
                         <!--Item-->
                         <div class="col-4">
-                            <button class="option-button">Item</button>
+                            <button class="option-button" onclick="showCommandInput()"><span class="command-btn-text">Command</span>
+                                <input class="d-none" type="text" id="command" name="command">
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <!--spoken text area-->
-                <div class="col-6" id="spoken-text">
+                <div class="col-12" id="spoken-text">
                     <span id="next-paragraph">next-paragraph</span>
                 </div>
 
                 <!--player response area-->
-                <div class="col-6" id="player-response">
+                <!-- <div class="col-6" id="player-response">
                     <span>player-response</span>
-                </div>
+                </div> -->
             </div>
 
         </div>

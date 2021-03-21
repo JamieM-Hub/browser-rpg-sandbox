@@ -179,12 +179,21 @@ $(document).ready(function () {
     var player = new Player("Siph", "Human", "Joiner", "Fish God Love", 666, 420, 69, "assets/img/player-image.jpg");
     var item = createItemObject(MILK_BOTTLE)
 
+
+    // FUNCTIONS
+
+    showCommandInput = () => {
+        $(".option-button > .d-none").removeClass("d-none")
+    }
+
     // UPDATE DISPLAY
     updateDisplay = () => {
         $(".location-image > img").attr("src", "assets/img/locations/cities/townston-farm.jpg")
-        $(".location-city").text(player.currentLocation.city)
+        $(".location-name").html(
+            player.currentLocation.city + "<br>" +
+            player.currentLocation.town + "<br>" +
+            player.currentLocation.area)
         $(".location-clout").text(player.currentLocation.clout)
-        $(".location-town").html(player.currentLocation.town + "<br>" + player.currentLocation.area)
 
         $(".player-image > img").attr("src", player.img)
         $(".player-name").text(player.name)
@@ -205,4 +214,30 @@ $(document).ready(function () {
     console.log(farmerJoe)
     console.log(player)
     updateDisplay()
+
+    // https://www.tutorialspoint.com/How-to-fire-after-pressing-ENTER-in-text-input-with-HTML
+    $('input').bind("Escape",function(e){
+        $("#command").addClass("d-none")
+     });
+
+     $('input').keyup(function(e){
+        if(e.keyCode == 27)
+        {
+           $(this).trigger("Escape");
+        }
+     });
+
+     $('input').bind("enterKey",function(e){
+        $("#command").addClass("d-none")
+     });
+
+     $('input').keyup(function(e){
+        if(e.keyCode == 13)
+        {
+           $(this).trigger("enterKey");
+        }
+     });
+
+
+
 })
