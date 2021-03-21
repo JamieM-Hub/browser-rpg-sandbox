@@ -1,8 +1,11 @@
+// \
+
 $(document).ready(function () {
 
     // CONSTANTS
     const XP_LEVELS = [0, 50, 100, 150, 200, 250]
     const HP_START = 100
+    //const LOCATION_START = farm_insideBarn
 
     // ENEMY DATA
     const FARM_SPIDER = ["Farm Spider", "arachnidia farmus", "worker", 2, 25, 5, 3, 10, {
@@ -35,6 +38,7 @@ $(document).ready(function () {
         }
         this.status = [false]
         this.perks = []
+        this.currentLocation = farm_insideBarn
     }
 
     // NPC OBJECTS
@@ -134,13 +138,31 @@ $(document).ready(function () {
     }
 
     // INITIALISE
-    var player = new Player("Siph", "Human", "Warrior", "Fish God Love", 666, 420, 69, "assets/img/player-image.jpg");
     let farm_insideBarn = new Location("Townston", "Townston Farm", "Inside Barn", "assets/img/locations/areas/farm_inside-barn.jpg")
     let beginnersLuck = new Perk("Beginner's Luck", 10, "beginnersLuck(player)", "whitesmoke")
     let bag = new Bag("LIDL bag", 10)
+
+    var player = new Player("Siph", "Human", "Joiner", "Fish God Love", 666, 420, 69, "assets/img/player-image.jpg");
+
+    // UPDATE DISPLAY
+    updateDisplay = () => { 
+        $(".location-image > img").attr("src", "assets/img/locations/cities/townston-farm.jpg")
+        $(".location-city").text(player.currentLocation.city)
+        $(".location-clout").text(player.currentLocation.clout)
+        $(".location-town").html(player.currentLocation.town + "<br>" + player.currentLocation.area)
+        //$(".location-area").text(player.currentLocation.area)
+        $(".player-image > img").attr("src", player.img)
+        $(".player-name").text(player.name)
+        $(".player-level").text("Level " + player.level)
+        $(".player-XP").text(player.XP.current + " / " + player.XP.toNext)
+        $(".player-race").text(player.race + " " + player.job)
+        //$(".player-job").text(playerjob)
+        $(".player-blessing").text(player.blessing)
+    }
+
     // RUN TIME CODE
 
     var item = createItemObject(MILK_BOTTLE)
-    console.log(bag)
-
+    console.log(player)
+    updateDisplay()
 })
