@@ -10,6 +10,11 @@ img {
     width: 100%;
 }
 
+button {
+    height: 100%;
+    width: 100%;
+}
+
 h3 {}
 
 .bg {
@@ -33,7 +38,7 @@ h3 {}
 
 /* LEFT DISPLAY */
 
-.location-data, 
+.location-data,
 .player-data {
     margin: 1.5vh 0;
 }
@@ -67,14 +72,11 @@ h3 {}
     padding: 0.5%;
 }
 
-.option-button {
+/* .option-button {
     height: 100%;
     width: 100%;
-}
-
-.option-button {
     text-align: center;
-}
+} */
 
 #NPC-data {}
 
@@ -91,3 +93,36 @@ h3 {}
 .btn-option {}
 
 /* RIGHT DISPLAY */
+
+.health-icon {
+    font-size: xx-large;
+    padding: 0;
+    color: red;
+}
+
+.status-icon {
+    padding: 0;
+}
+
+#stats {
+    padding: 1vh;
+    font-size: larger;
+}
+
+#equipment {
+    padding: 1vw;
+}
+
+.equipped-item {
+    padding: 0;
+    height: 8vh;
+}
+
+#perks {
+    padding: 1vw 0.5vw;
+}
+
+.perk-button {
+    height: 6vh;
+    padding: 0;
+}

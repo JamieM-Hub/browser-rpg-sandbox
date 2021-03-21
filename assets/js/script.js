@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     // add style
     $(".option-button").addClass("btn btn-option")
-    $(".player-options > .col-4").addClass("center-text").text("naaah")
+    //$(".player-options > .col-4").addClass("center-text").text("naaah")
 
     showCoords = (event) => {
         var x = event.pageX;
@@ -18,5 +18,5 @@ $(document).ready(function () {
         // document.getElementById("demo").innerHTML = coords;
     }
 
-    
+
 })
