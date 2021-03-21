@@ -1,13 +1,16 @@
 /* TOP LEVEL (.-display) */
 
 body {
-
+    padding-top: 1vh;
 }
+
 .bg {
     background-color: #090909;
     color: whitesmoke;
 }
 
-h3 {
-    
+.location-background img {
+    width: 100%;
 }
+
+h3 {}
