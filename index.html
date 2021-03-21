@@ -92,53 +92,58 @@
         <div class="col-7 display" id="center-display">
 
             <!--location background area (center top)-->
-            <div class="row justify-content-center">
-                <div class="location-background">
-                    <img src="assets\img\inside-barn.jpg" alt="location-background">
-                </div>
+            <div class="row justify-content-center" id="location-background">
+                <!-- <img src="assets\img\inside-barn.jpg" alt="inside barn"> -->
             </div>
 
             <!--player options (center bottom)-->
-            <div class="row bg justify-content-center">
+            <div class="row bg justify-content-center" id="player-options">
 
                 <!--NPC image-->
                 <div class="col-3">
-                    <img src="" alt="NPC image">
+                    <img src="assets\img\farmer-face.jpg" alt="NPC image">
+                </div>
+
+                <!--NPC data-->
+                <div class="col-3" id="NPC-data">
+                    <div class="row"><span id="NPC-name">NPC.name</span></div>
+                    <div class="row"><span id="NPC-trade">NPC.trade</span></div>
+                    <div class="row"><span id="NPC-desc">NPC.desc</span></div>
                 </div>
 
                 <!-- player option buttons-->
-                <div class="col-9">
+                <div class="col-6">
                     <div class="row player-options">
                         <!--Attack-->
-                        <div class="col-4 option-button">
-                            <button>Attack</button>
+                        <div class="col-4">
+                            <button class="option-button">Attack</button>
                         </div>
                         <!--Skill-->
-                        <div class="col-4 option-button">
-                            <button>Skill</button>
+                        <div class="col-4">
+                            <button class="option-button">Skill</button>
                         </div>
                         <!--Throw-->
-                        <div class="col-4 option-button">
-                            <button>Throw</button>
+                        <div class="col-4">
+                            <button class="option-button">Throw</button>
                         </div>
                         <!--Run-->
-                        <div class="col-4 option-button">
-                            <button>Run</button>
+                        <div class="col-4">
+                            <button class="option-button">Run</button>
                         </div>
                         <!--Talk-->
-                        <div class="col-4 option-button">
-                            <button>Talk</button>
+                        <div class="col-4">
+                            <button class="option-button">Talk</button>
                         </div>
                         <!--Item-->
-                        <div class="col-4 option-button">
-                            <button>Item</button>
+                        <div class="col-4">
+                            <button class="option-button">Item</button>
                         </div>
                     </div>
                 </div>
 
                 <!--spoken text area-->
                 <div class="col-12" id="spoken-text">
-                    <span>I said something!</span>
+                    <span id="next-paragraph">next-paragraph</span>
                 </div>
             </div>
 
