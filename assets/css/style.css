@@ -90,6 +90,12 @@ h3 {}
     text-align: center;
 }
 
+#player-response {
+    padding: 20px 30px;
+    font-size: large;
+    text-align: center;
+}
+
 .btn-option {}
 
 /* RIGHT DISPLAY */
