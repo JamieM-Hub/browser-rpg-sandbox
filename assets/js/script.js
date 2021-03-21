@@ -23,11 +23,19 @@ $(document).ready(function () {
 
     // LOCATION COMMAND OPTIONS
     const FARM_INSIDEBARN = {
-        "door": "the doorway leads outside",
-        "wall": "the beams are sturdy but the barn doesn't seem to be in use",
-        "floor": "stone cold. steve austin.",
-        "face": "there's nobody there...",
-        "think": "best be thinking how the hell you got here"
+        "door": "The doorway leads outside.",
+        "wall": "The beams are sturdy but the barn doesn't seem to be in use.",
+        "floor": "Stone cold. Steve Austin.",
+        "face": "There's nobody there...",
+        "think": "Best be thinking about how the hell you're getting home."
+    }
+
+    const FARM_OUTSIDEBARN = {
+        "door": "A door leads into the barn.",
+        "wall": "The beams are sturdy but the barn doesn't seem to be in use.",
+        "floor": "Grass. Slightly moist.",
+        "face": "There's nobody there...",
+        "think": "Best be thinking about how the hell you're getting home."
     }
 
     // ENEMY DATA
@@ -171,8 +179,8 @@ $(document).ready(function () {
         this.clout = 0
     }
 
-    let farm_insideBarn = new Location("Townston", "Townston Farm", "Inside Barn", FARM_INSIDEBARN, "assets/img/locations/areas/farm_inside-barn.jpg")
-    let farm_outsideBarn = new Location("Townston", "Townston Farm", "Outside Barn", FARM_INSIDEBARN, "assets/img/locations/areas/farm_outside-barn.jpg")
+    let farm_insideBarn = new Location("Townston City", "Townston Farm", "Inside Barn", FARM_INSIDEBARN, "assets/img/locations/areas/farm_inside-barn.jpg")
+    let farm_outsideBarn = new Location("Townston City", "Townston Farm", "Outside Barn", FARM_OUTSIDEBARN, "assets/img/locations/areas/farm_outside-barn.jpg")
 
     // EQUIPMENT OBJECTS
     function Equipment(name, slot, level, modifier, perk, skills, img) {
