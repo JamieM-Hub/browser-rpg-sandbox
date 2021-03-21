@@ -19,8 +19,8 @@
         <div class="col-2 display" id="left-display">
 
             <!--menu button (left top)-->
-            <div class="row top-button justify-content-center" id="menu">
-                <button class="">MENU</button>
+            <div class="row top-button justify-content-center" id="mainMenuButton">
+                <button onclick="openMainMenu()">MENU</button>
             </div>
 
             <div class="bg container">
@@ -78,8 +78,14 @@
         <!--center column-->
         <div class="col-8 display" id="center-display">
 
+            <div class="row justify-content-center xl-div d-none" id="mainMenu">
+                MAIN MENU
+            </div>
+            <div class="row justify-content-center xl-div d-none" id="inventory">
+                INVENTORY
+            </div>
             <!--location background area (center top)-->
-            <div class="row justify-content-center" id="location-background" onclick="showCoords()">
+            <div class="row justify-content-center xl-div" id="location-background" onclick="showCoords()">
 
             </div>
 
@@ -151,7 +157,9 @@
         <div class="col-2 display" id="right-display">
 
             <!--inventory button (right top)-->
-            <div class="row top-button justify-content-center" id="inventory"><button>INVENTORY</button></div>
+            <div class="row top-button justify-content-center" id="inventoryButton">
+                <button onclick="openInventory()">INVENTORY</button>
+            </div>
 
             <div class="bg container">
 

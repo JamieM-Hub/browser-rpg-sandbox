@@ -5,6 +5,7 @@ $(document).ready(function () {
     // CONSTANTS
     const XP_LEVELS = [0, 50, 100, 150, 200, 250]
     const HP_START = 100
+    const MAIN_MENU = "mainMenu"
     //const LOCATION_START = farm_insideBarn
 
     // NPC DIALOGUE DATA
@@ -84,6 +85,10 @@ $(document).ready(function () {
 
     // ITEM DATA
     const MILK_BOTTLE = ["Milk Bottle", 3, "potion", 20, 5, "assets/img/items/milk-bottle.png"]
+
+    // GLOBAL VARIABLES
+    var mainMenuOpen = false
+    var inventoryOpen = false
 
     // PLAYER OBJECT
     function Player(name, race, job, blessing, attack, defense, speed, img) {
@@ -264,6 +269,53 @@ $(document).ready(function () {
         console.log("perk 1 activated")
     }
 
+    // TOP BUTTONS
+    openMainMenu = () => {
+        
+        if (!(mainMenuOpen) && !(inventoryOpen)) {
+            console.log ("close loc open main")
+            $("#mainMenu").removeClass("d-none")
+            $("#location-background").addClass("d-none")
+            mainMenuOpen = true;
+        }
+        else if (!(mainMenuOpen) && (inventoryOpen)) {
+            console.log ("close inv open main")
+            $("#mainMenu").removeClass("d-none")
+            $("#inventory").addClass("d-none")
+            mainMenuOpen = true;
+        }
+        else if (mainMenuOpen) {
+            console.log ("close main open loc")
+            $("#mainMenu").addClass("d-none")
+            $("#location-background").removeClass("d-none")
+            mainMenuOpen = false;
+        }
+
+    }
+
+    openInventory = () => {
+
+        if (!(inventoryOpen) && !(mainMenuOpen)) {
+            //console.log ("close loc open inv")
+            $("#inventory").removeClass("d-none")
+            $("#location-background").addClass("d-none")
+            inventoryOpen = true;
+        }
+        else if (!(inventoryOpen) && (mainMenuOpen)) {
+            //console.log ("close main open inv")
+            $("#inventory").removeClass("d-none")
+            $("#mainMenu").addClass("d-none")
+            inventoryOpen = true;
+        }
+        else if (inventoryOpen) {
+            //console.log ("close inv open loc")
+            $("#location-background").removeClass("d-none")
+            $("#inventory").addClass("d-none")
+            inventoryOpen = false;
+        }
+console.log()
+    }
+
     // UPDATE DISPLAY
     updateDisplay = () => {
         $(".location-image > img").attr("src", "assets/img/locations/cities/townston-farm.jpg")
@@ -330,4 +382,4 @@ $(document).ready(function () {
 
 
 
-})
+});
