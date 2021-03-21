@@ -6,7 +6,7 @@ $(document).ready(function () {
     const XP_LEVELS = [0, 50, 100, 150, 200, 250]
     const HP_START = 100
     const MAIN_MENU = "mainMenu"
-    //const LOCATION_START = farm_insideBarn
+    //LOCATION_START = farm_insideBarn
 
     // NPC DIALOGUE DATA
     const D_FARMER_JOE = [
@@ -20,6 +20,15 @@ $(document).ready(function () {
             "YEE-HAW!"
         ]
     ]
+
+    // LOCATION COMMAND OPTIONS
+    const FARM_INSIDEBARN = {
+        "door": "the doorway leads outside",
+        "wall": "the beams are sturdy but the barn doesn't seem to be in use",
+        "floor": "stone cold. steve austin.",
+        "face": "there's nobody there...",
+        "think": "best be thinking how the hell you got here"
+    }
 
     // ENEMY DATA
     const FARM_SPIDER = ["Farm Spider", "arachnidia farmus", "worker", 2, 25, 5, 3, 10, {
@@ -153,13 +162,17 @@ $(document).ready(function () {
     }
 
     // LOCATION OBJECTS
-    function Location(city, town, area, img) {
+    function Location(city, town, area, navigation, img) {
         this.city = city
         this.town = town
         this.area = area
+        this.navigation = navigation
         this.img = img
         this.clout = 0
     }
+
+    let farm_insideBarn = new Location("Townston", "Townston Farm", "Inside Barn", FARM_INSIDEBARN, "assets/img/locations/areas/farm_inside-barn.jpg")
+    let farm_outsideBarn = new Location("Townston", "Townston Farm", "Outside Barn", FARM_INSIDEBARN, "assets/img/locations/areas/farm_outside-barn.jpg")
 
     // EQUIPMENT OBJECTS
     function Equipment(name, slot, level, modifier, perk, skills, img) {
@@ -208,7 +221,6 @@ $(document).ready(function () {
     }
 
     // CREATE OBJECT FUNCTIONS
-
     createEnemyObject = (enemy) => {
         let name = enemy[0]
         let race = enemy[1]
@@ -245,7 +257,7 @@ $(document).ready(function () {
         return new Item(name, max, type, modifier, value, img)
     }
 
-    let farm_insideBarn = new Location("Townston", "Townston Farm", "Inside Barn", "assets/img/locations/areas/farm_inside-barn.jpg")
+    // INITIALISE
     let beginnersLuck = new Perk("Beginner's Luck", 10, "beginnersLuck(player)", "whitesmoke")
     let bag = new Bag("LIDL bag", 10)
     let farmerJoe = new NPC("Farmer Joe", "Human", "Beefmaster", 1, D_FARMER_JOE, "assets/img/NPCs/farmer-face.jpg")
@@ -269,23 +281,67 @@ $(document).ready(function () {
         console.log("perk 1 activated")
     }
 
+    // COMMAND READER
+    processCommand = () => {
+        let command = $("#command").val().toLowerCase()
+        console.log(command.toLowerCase() + " processed")
+        if (command == "door") {
+            if (player.currentLocation = farm_insideBarn) {
+                display.nextParagraph = "you left the barn"
+                changeLocation(farm_outsideBarn)
+            } else if (player.currentLocation = farm_outsideBarn) {
+                display.nextParagraph = "you entered the barn"
+                changeLocation(farm_insideBarn)
+            }
+
+        }
+    }
+
+    // https://www.tutorialspoint.com/How-to-fire-after-pressing-ENTER-in-text-input-with-HTML
+    $('input').bind("Escape", function (e) {
+        $("#command").addClass("d-none")
+    });
+
+    $('input').keyup(function (e) {
+        if (e.keyCode == 27) {
+            $(this).trigger("Escape");
+        }
+    });
+
+    $('input').bind("enterKey", function (e) {
+        var commandInput = $("#command").val()
+        //$("#command").attr("type", "reset")
+        processCommand(commandInput)
+        $("#command").addClass("d-none")
+    });
+
+    $('input').keyup(function (e) {
+        if (e.keyCode == 13) {
+            $(this).trigger("enterKey");
+        }
+    });
+
+    // CHANGE LOCATION
+    changeLocation = (nextLocation) => {
+        console.log("location changed from " + player.currentLocation.area + " to " + nextLocation.area)
+        player.currentLocation = nextLocation
+        updateDisplay()
+    }
+
     // TOP BUTTONS
     openMainMenu = () => {
-        
         if (!(mainMenuOpen) && !(inventoryOpen)) {
-            console.log ("close loc open main")
+            console.log("close loc open main")
             $("#mainMenu").removeClass("d-none")
             $("#location-background").addClass("d-none")
             mainMenuOpen = true;
-        }
-        else if (!(mainMenuOpen) && (inventoryOpen)) {
-            console.log ("close inv open main")
+        } else if (!(mainMenuOpen) && (inventoryOpen)) {
+            console.log("close inv open main")
             $("#mainMenu").removeClass("d-none")
             $("#inventory").addClass("d-none")
             mainMenuOpen = true;
-        }
-        else if (mainMenuOpen) {
-            console.log ("close main open loc")
+        } else if (mainMenuOpen) {
+            console.log("close main open loc")
             $("#mainMenu").addClass("d-none")
             $("#location-background").removeClass("d-none")
             mainMenuOpen = false;
@@ -294,31 +350,30 @@ $(document).ready(function () {
     }
 
     openInventory = () => {
-
         if (!(inventoryOpen) && !(mainMenuOpen)) {
             //console.log ("close loc open inv")
             $("#inventory").removeClass("d-none")
             $("#location-background").addClass("d-none")
             inventoryOpen = true;
-        }
-        else if (!(inventoryOpen) && (mainMenuOpen)) {
+        } else if (!(inventoryOpen) && (mainMenuOpen)) {
             //console.log ("close main open inv")
             $("#inventory").removeClass("d-none")
             $("#mainMenu").addClass("d-none")
             inventoryOpen = true;
-        }
-        else if (inventoryOpen) {
+        } else if (inventoryOpen) {
             //console.log ("close inv open loc")
             $("#location-background").removeClass("d-none")
             $("#inventory").addClass("d-none")
             inventoryOpen = false;
         }
-console.log()
     }
 
     // UPDATE DISPLAY
     updateDisplay = () => {
-        $(".location-image > img").attr("src", "assets/img/locations/cities/townston-farm.jpg")
+        //url = "url(farm_insideBar +
+        console.log(player.currentLocation.img)
+        $(".location-image > img").attr("src", player.currentLocation.img)
+        $("#location-background").css("background-image", "url(\"" + player.currentLocation.img + "\")")
         $(".location-name").html(
             player.currentLocation.city + "<br>" +
             player.currentLocation.town + "<br>" +
@@ -353,33 +408,7 @@ console.log()
     player.equipped["body"] = tuxedo
     player.equipped["feet"] = hermesBoots
     player.equipped["trinket"] = blueRing
-    console.log(player)
     updateDisplay()
-
-    // https://www.tutorialspoint.com/How-to-fire-after-pressing-ENTER-in-text-input-with-HTML
-    $('input').bind("Escape", function (e) {
-        $("#command").addClass("d-none")
-    });
-
-    $('input').keyup(function (e) {
-        if (e.keyCode == 27) {
-            $(this).trigger("Escape");
-        }
-    });
-
-    $('input').bind("enterKey", function (e) {
-        var commandInput = $("#command").val()
-        //$("#command").attr("type", "reset")
-        console.log(commandInput)
-        $("#command").addClass("d-none")
-    });
-
-    $('input').keyup(function (e) {
-        if (e.keyCode == 13) {
-            $(this).trigger("enterKey");
-        }
-    });
-
 
 
 });
