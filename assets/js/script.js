@@ -228,6 +228,9 @@ $(document).ready(function () {
      });
 
      $('input').bind("enterKey",function(e){
+        var commandInput = $("#command").val()
+        $("#command").attr("placeholder", ">>")
+        console.log(commandInput)
         $("#command").addClass("d-none")
      });
 
