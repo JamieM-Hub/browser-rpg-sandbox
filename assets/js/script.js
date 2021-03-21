@@ -325,6 +325,7 @@ $(document).ready(function () {
     changeLocation = (nextLocation) => {
         console.log("location changed from " + player.currentLocation.area + " to " + nextLocation.area)
         player.currentLocation = nextLocation
+        player.currentNPC = null
         updateDisplay()
     }
 
@@ -387,10 +388,17 @@ $(document).ready(function () {
         $(".player-race").text(player.race + " " + player.job)
         $(".player-blessing").text(player.blessing)
 
-        $("#NPC-image > img").attr("src", player.currentNPC.img)
-        $("#NPC-name").text(player.currentNPC.name)
-        $("#NPC-race-class").text(player.currentNPC.race + " " + player.currentNPC.job)
-        $("#NPC-level").text("Level " + player.currentNPC.level)
+        if (player.currentNPC == null) {
+            $("#NPC-image > img").attr("src", player.currentLocation.img)
+            $("#NPC-name").text("")
+            $("#NPC-race-class").text("")
+            $("#NPC-level").text("")
+        } else {
+            $("#NPC-image > img").attr("src", player.currentNPC.img)
+            $("#NPC-name").text(player.currentNPC.name)
+            $("#NPC-race-class").text(player.currentNPC.race + " " + player.currentNPC.job)
+            $("#NPC-level").text("Level " + player.currentNPC.level)
+        }
         $("#spoken-text").text(display.nextParagraph)
 
         $("#left-hand").find("img").attr("src", player.equipped["left-hand"].img)
