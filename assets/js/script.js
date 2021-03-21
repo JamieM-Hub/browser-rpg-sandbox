@@ -186,6 +186,10 @@ $(document).ready(function () {
         $(".option-button > .d-none").removeClass("d-none")
     }
 
+    perk1 = () => {
+        console.log("perk activated")
+    }
+
     // UPDATE DISPLAY
     updateDisplay = () => {
         $(".location-image > img").attr("src", "assets/img/locations/cities/townston-farm.jpg")
@@ -229,7 +233,7 @@ $(document).ready(function () {
 
      $('input').bind("enterKey",function(e){
         var commandInput = $("#command").val()
-        $("#command").attr("placeholder", ">>")
+        //$("#command").attr("type", "reset")
         console.log(commandInput)
         $("#command").addClass("d-none")
      });
