@@ -1,8 +1,8 @@
 /* TOP LEVEL (.-display) */
 
 body {
-    padding: 5vh 1vw;
-
+    /* padding: 2.5vh 1vw; */
+    margin: 1vh;
 }
 
 img {
@@ -15,25 +15,44 @@ h3 {}
 .bg {
     background-color: #090909;
     color: whitesmoke;
+    text-align: center;
+    margin: 1vh 0;
 }
 
 .center-text {
     text-align: center;
 }
 
+.top-button {
+    padding: 5% 15%;
+}
+
+.top-button>button {
+    width: 100%;
+}
+
 /* LEFT DISPLAY */
 
+.location-data, 
+.player-data {
+    margin: 1.5vh 0;
+}
+
+.player-image {
+    height: 18vh;
+}
+
 /* CENTER DISPLAY */
+
+#center-display {
+    padding-top: 2.5vh;
+}
 
 #location-background {
     height: 60vh;
     background-image: url("../img/inside-barn.jpg");
     background-size: cover;
 }
-
-/* .location-background {
-    height: 60vh;
-} */
 
 #player-options {
     height: 30vh;
@@ -57,11 +76,10 @@ h3 {}
     text-align: center;
 }
 
-#NPC-data {
-}
+#NPC-data {}
 
-#NPC-data > div {
-    padding:10px;
+#NPC-data>div {
+    padding: 10px;
 }
 
 #spoken-text {

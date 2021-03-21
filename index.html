@@ -19,81 +19,77 @@
         <div class="col-2 display" id="left-display">
 
             <!--menu button (left top)-->
-            <div class="row justify-content-center" id="menu">
-                <div class="top-button">
-                    <button>MENU</button>
-                </div>
-            </div>
+            <div class="row top-button justify-content-center" id="menu"><button>MENU</button></div>
 
-            <div class="bg">
+            <div class="bg container">
                 <!--location data (left center)-->
                 <div class="row" id="location">
+                    <!--location.image-->
+                    <div class="col-12 location-data location-image">
+                        <img src="assets\img\farm-town.jpg" alt="location image">
+                    </div>
                     <!--location.city-->
-                    <div class="col-12 location-data">
-                        <h3>location.city</h3>
+                    <div class="col-12 location-data location-city">
+                        <span>location.city</span>
                     </div>
                     <!--location.clout-->
-                    <div class="col-12 location-data">
-                        <h3>location.clout</h3>
-                    </div>
-                    <!--location.image-->
-                    <div class="col-12 location-data">
-                        <img src="" alt="location image">
+                    <div class="col-12 location-data location-clout">
+                        <span>location.clout</span>
                     </div>
                     <!--location.town-->
-                    <div class="col-12 location-data">
-                        <h3>location.town</h3>
+                    <div class="col-12 location-data location-town">
+                        <span>location.town</span>
                     </div>
                     <!--location.area-->
-                    <div class="col-12 location-data">
-                        <h3>location.area</h3>
+                    <div class="col-12 location-data location-area">
+                        <span>location.area</span>
                     </div>
                 </div>
 
                 <!--player data (left bottom)-->
                 <div class="row" id="player">
                     <!--player.image-->
-                    <div class="col-12 player-data">
-                        <img src="" alt="player image">
+                    <div class="col-12 player-data player-image">
+                        <img src="assets\img\player-image.jpg" alt="player image" height="">
                     </div>
                     <!--player.name-->
-                    <div class="col-12 player-data">
-                        <h3>player.name</h3>
+                    <div class="col-12 player-data player-name">
+                        <span>player.name</span>
                     </div>
                     <!--player.level-->
-                    <div class="col-12 player-data">
-                        <h3>player.level</h3>
+                    <div class="col-12 player-data player-level">
+                        <span>player.level</span>
                     </div>
                     <!--player.XP-->
-                    <div class="col-12 player-data">
-                        <h3>
+                    <div class="col-12 player-data player-XP">
+                        <span>
                             <span id="currentXP">currentXP</span>
                             <span class="divider"> / </span>
                             <span id="XPtoNext">XPtoNext</span>
-                        </h3>
+                        </span>
                     </div>
                     <!--player.race-->
-                    <div class="col-12 player-data">
-                        <h3>player.race</h3>
+                    <div class="col-12 player-data player-race">
+                        <span>player.race</span>
                     </div>
                     <!--player.class-->
-                    <div class="col-12 player-data">
-                        <h3>player.class</h3>
+                    <div class="col-12 player-data player-class">
+                        <span>player.class</span>
                     </div>
                     <!--player.blessing-->
-                    <div class="col-12 player-data">
-                        <h3>player.blessing</h3>
+                    <div class="col-12 player-data player-blessing">
+                        <span>player.blessing</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <!--center column-->
-        <div class="col-7 display" id="center-display">
+        <div class="col-8 display" id="center-display">
 
             <!--location background area (center top)-->
-            <div class="row justify-content-center" id="location-background">
-                <!-- <img src="assets\img\inside-barn.jpg" alt="inside barn"> -->
+            <div class="row justify-content-center" id="location-background" onclick="showCoords()">
+
             </div>
 
             <!--player options (center bottom)-->
@@ -153,13 +149,9 @@
         <div class="col-2 display" id="right-display">
 
             <!--inventory button (right top)-->
-            <div class="row justify-content-center" id="inventory">
-                <div class="top-button">
-                    <button>INVENTORY</button>
-                </div>
-            </div>
+            <div class="row top-button justify-content-center" id="inventory"><button>INVENTORY</button></div>
 
-            <div class="bg">
+            <div class="bg container">
 
                 <!--battle stats (right center top)-->
                 <div class="row display justify-content-center" id="battle-stats">
@@ -299,6 +291,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
