@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Browser RPG</title>
+</head>
+
+<body class="container-fluid">
+    <div class="row">
+
+        <!--left column-->
+        <div class="col-3 left-display">
+
+            <!--menu button (left top)-->
+            <div class="row justify-content-center" id="menu">
+                <div class="top-button">
+                    <button>MENU</button>
+                </div>
+            </div>
+
+            <!--location data (left center)-->
+            <div class="row" id="location">
+                <!--location.city-->
+                <div class="col-12 location-data">
+                    <h3>location.city</h3>
+                </div>
+                <!--location.clout-->
+                <div class="col-12 location-data">
+                    <h3>location.clout</h3>
+                </div>
+                <!--location.image-->
+                <div class="col-12 location-data">
+                    <img src="" alt="location image">
+                </div>
+                <!--location.town-->
+                <div class="col-12 location-data">
+                    <h3>location.town</h3>
+                </div>
+                <!--location.area-->
+                <div class="col-12 location-data">
+                    <h3>location.area</h3>
+                </div>
+            </div>
+
+            <!--player data (left bottom)-->
+            <div class="row" id="player">
+                <!--player.image-->
+                <div class="col-12 player-data">
+                    <img src="" alt="player image">
+                </div>
+                <!--player.name-->
+                <div class="col-12 player-data">
+                    <h3>player.name</h3>
+                </div>
+                <!--player.level-->
+                <div class="col-12 player-data">
+                    <h3>player.level</h3>
+                </div>
+                <!--player.XP-->
+                <div class="col-12 player-data">
+                    <h3>
+                        <span id="currentXP">currentXP</span>
+                        <span class="divider"> / </span>
+                        <span id="XPtoNext">XPtoNext</span>
+                    </h3>
+                </div>
+                <!--player.race-->
+                <div class="col-12 player-data">
+                    <h3>player.race</h3>
+                </div>
+                <!--player.class-->
+                <div class="col-12 player-data">
+                    <h3>player.class</h3>
+                </div>
+                <!--player.blessing-->
+                <div class="col-12 player-data">
+                    <h3>player.blessing</h3>
+                </div>
+            </div>
+        </div>
+
+        <!--center column-->
+        <div class="col-6 center-display">
+
+            <!--location background area (center top)-->
+            <div class="row justify-content-center">
+                <div class="location-background">
+                    <img src="" alt="location-background">
+                </div>
+            </div>
+
+            <!--player options (center bottom)-->
+            <div class="row justify-content-center">
+
+                <!--NPC image-->
+                <div class="col-3">
+                    <img src="" alt="NPC image">
+                </div>
+
+                <!-- player option buttons-->
+                <div class="col-9">
+                    <div class="row player-options">
+                        <!--Attack-->
+                        <div class="col-4 option-button">
+                            <button>Attack</button>
+                        </div>
+                        <!--Skill-->
+                        <div class="col-4 option-button">
+                            <button>Skill</button>
+                        </div>
+                        <!--Throw-->
+                        <div class="col-4 option-button">
+                            <button>Throw</button>
+                        </div>
+                        <!--Run-->
+                        <div class="col-4 option-button">
+                            <button>Run</button>
+                        </div>
+                        <!--Talk-->
+                        <div class="col-4 option-button">
+                            <button>Talk</button>
+                        </div>
+                        <!--Item-->
+                        <div class="col-4 option-button">
+                            <button>Item</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--spoken text area-->
+                <div class="col-12" id="spoken-text">
+                    <span>I said something!</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!--right column-->
+        <div class="col-3 right-display">
+
+            <!--inventory button (right top)-->
+            <div class="row justify-content-center" id="inventory">
+                <div class="top-button">
+                    <button>INVENTORY</button>
+                </div>
+            </div>
+
+            <!--battle stats (right center top)-->
+            <div class="row justify-content-center" id="battle-stats">
+
+                <!--health-->
+                <div class="col-12" id="health">
+                    <div class="row">
+                        <div class="col-3 health-icon"><i class="fas fa-heart"></i></div>
+                        <div class="col-3 health-icon"><i class="fas fa-heart"></i></div>
+                        <div class="col-3 health-icon"><i class="fas fa-heart"></i></div>
+                        <div class="col-3 health-icon"><i class="fas fas fa-heart-broken"></i></div>
+                    </div>
+                </div>
+
+                <!--status-->
+                <div class="col-12" id="status">
+                    <div class="row justify-content-center">
+                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                        <div class="col-2 status-icon"><i class="fas fas fa-skull-crossbones"></i></div>
+                    </div>
+                </div>
+
+                <!--attack-->
+                <div class="col-12" id="attack">
+                    <div class="row stat justify-content-center">
+                        <div class="col-4 stat-icon"><i class="fas fa-crosshairs"></i></div>
+                        <div class="col-8 stat-value"><span>666</span></div>
+                    </div>
+                </div>
+
+                <!--defense-->
+                <div class="col-12" id="defense">
+                    <div class="row stat justify-content-center">
+                        <div class="col-4 stat-icon"><i class="fas fas fa-shield-alt"></i></div>
+                        <div class="col-8 stat-value"><span>420</span></div>
+                    </div>
+                </div>
+
+                <!--speed-->
+                <div class="col-12" id="speed">
+                    <div class="row stat justify-content-center">
+                        <div class="col-4 stat-icon"><i class="fas far fa-clock"></i></div>
+                        <div class="col-8 stat-value"><span>69</span></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--equipment stats (right center bottom)-->
+            <div class="row justify-content-center" id="equipment">
+
+                <!--left hand-->
+                <div class="col-6 equipped-item" id="left-hand">
+                    <button><img src="" alt="left hand"></button>
+                </div>
+
+                <!--right hand-->
+                <div class="col-6 equipped-item" id="right-hand">
+                    <button><img src="" alt="right hand"></button>
+                </div>
+
+                <!--head-->
+                <div class="col-6 equipped-item" id="head">
+                    <button><img src="" alt="head"></button>
+                </div>
+
+                <!--outfit-->
+                <div class="col-6 equipped-item" id="outfit">
+                    <button><img src="" alt="outfit"></button>
+                </div>
+
+                <!--feet-->
+                <div class="col-6 equipped-item" id="feet">
+                    <button><img src="" alt="feet"></button>
+                </div>
+
+                <!--trinket-->
+                <div class="col-6 equipped-item" id="trinket">
+                    <button><img src="" alt="trinket"></button>
+                </div>
+            </div>
+
+            <!--perks (right bottom)-->
+            <div class="row justify-content-center" id="perks">
+                
+                <!--perk 1-->
+                <div class="col-12 perk-button" id="perk1">
+                    <span class="perk-cooldown"><img src="" alt="timer"></span>
+                    <span class="cooldown-current">10</span>
+                    <button><span class="perk-text">perk 1</span></button>
+                </div>
+
+                <!--perk 2-->
+                <div class="col-12 perk-button" id="perk2">
+                    <span class="perk-cooldown"><img src="" alt="timer"></span>
+                    <span class="cooldown-current">10</span>
+                    <button><span class="perk-text">perk 2</span></button>
+                </div>
+
+                <!--perk 3-->
+                <div class="col-12 perk-button" id="perk3">
+                    <span class="perk-cooldown"><img src="" alt="timer"></span>
+                    <span class="cooldown-current">10</span>
+                    <button><span class="perk-text">perk 3</span></button>
+                </div>
+
+                <!--perk 4-->
+                <div class="col-12 perk-button" id="perk4">
+                    <span class="perk-cooldown"><img src="" alt="timer"></span>
+                    <span class="cooldown-current">10</span>
+                    <button><span class="perk-text">perk 4</span></button>
+                </div>
+
+                <!--perk 5-->
+                <div class="col-12 perk-button" id="perk5">
+                    <span class="perk-cooldown"><img src="" alt="timer"></span>
+                    <span class="cooldown-current">10</span>
+                    <button><span class="perk-text">perk 5</span></button>
+                </div>
+
+                <!--perk 6-->
+                <div class="col-12 perk-button" id="perk6">
+                    <span class="perk-cooldown"><img src="" alt="timer"></span>
+                    <span class="cooldown-current">10</span>
+                    <button><span class="perk-text">perk 6</span></button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
