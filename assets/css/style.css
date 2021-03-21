@@ -72,16 +72,20 @@ h3 {}
     padding: 0.5%;
 }
 
+
 /* .option-button {
     height: 100%;
     width: 100%;
     text-align: center;
 } */
 
-#NPC-data {}
+#NPC-data {
+    
+}
 
-#NPC-data>div {
-    padding: 10px;
+#NPC-data>div>div {
+    padding: 5px;
+    justify-content: center;
 }
 
 #spoken-text {

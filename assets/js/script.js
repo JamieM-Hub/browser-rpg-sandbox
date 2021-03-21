@@ -7,6 +7,19 @@ $(document).ready(function () {
     const HP_START = 100
     //const LOCATION_START = farm_insideBarn
 
+    // NPC DIALOGUE DATA
+    const D_FARMER_JOE = [
+        [ // D_0
+            "Howdy partner! You look like you need a helping hand.",
+            "This ain't no place for a lil pie like you. You should head to the town and find some Lemsip.",
+            "Good luck! Don't forget to knock on your way out. YEE-HAW!"
+        ],
+        [ // D_1
+            "You again! I told you to go get some Lemsip.",
+            "YEE-HAW!"
+        ]
+    ]
+
     // ENEMY DATA
     const FARM_SPIDER = ["Farm Spider", "arachnidia farmus", "worker", 2, 25, 5, 3, 10, {
         "Tiny Carapace": "1",
@@ -39,10 +52,21 @@ $(document).ready(function () {
         this.status = [false]
         this.perks = []
         this.currentLocation = farm_insideBarn
+        this.currentNPC = farmerJoe
     }
 
     // NPC OBJECTS
-    function NPC(name, race, job, level, HP, attack, defense, speed, loot, XP, img) {
+    function NPC(name, race, job, level, dialogue, img) {
+        this.name = name
+        this.race = race
+        this.job = job
+        this.level = level
+        this.dialogue = dialogue
+        this.img = img
+    }
+
+    // ENEMY OBJECTS
+    function Enemy(name, race, job, level, HP, attack, defense, speed, loot, XP, img) {
         this.name = name
         this.race = race
         this.job = job
@@ -111,7 +135,15 @@ $(document).ready(function () {
         this.capacity = capacity
     }
 
+    // DISPLAY OBJECT 
+    function Display() {
+        this.currentLocation = farm_insideBarn
+        this.currentNPC = farmerJoe
+        this.nextParagraph = ""
+    }
+
     // CREATE OBJECT FUNCTIONS
+
     createEnemyObject = (enemy) => {
         let name = enemy[0]
         let race = enemy[1]
@@ -124,7 +156,7 @@ $(document).ready(function () {
         let loot = enemy[8]
         let XP = enemy[9]
         let img = enemy[10]
-        return new NPC(name, race, job, level, HP, attack, defense, speed, loot, XP, img)
+        return new Enemy(name, race, job, level, HP, attack, defense, speed, loot, XP, img)
     }
 
     createItemObject = (item) => {
@@ -137,32 +169,40 @@ $(document).ready(function () {
         return new Item(name, max, type, modifier, value, img)
     }
 
-    // INITIALISE
+
     let farm_insideBarn = new Location("Townston", "Townston Farm", "Inside Barn", "assets/img/locations/areas/farm_inside-barn.jpg")
     let beginnersLuck = new Perk("Beginner's Luck", 10, "beginnersLuck(player)", "whitesmoke")
     let bag = new Bag("LIDL bag", 10)
-
+    let farmerJoe = new NPC("Farmer Joe", "Human", "Beefmaster", 1, D_FARMER_JOE, "assets/img/NPCs/farmer-face.jpg")
+    let display = new Display()
+    display.nextParagraph = farmerJoe.dialogue[0]
     var player = new Player("Siph", "Human", "Joiner", "Fish God Love", 666, 420, 69, "assets/img/player-image.jpg");
+    var item = createItemObject(MILK_BOTTLE)
 
     // UPDATE DISPLAY
-    updateDisplay = () => { 
+    updateDisplay = () => {
         $(".location-image > img").attr("src", "assets/img/locations/cities/townston-farm.jpg")
         $(".location-city").text(player.currentLocation.city)
         $(".location-clout").text(player.currentLocation.clout)
         $(".location-town").html(player.currentLocation.town + "<br>" + player.currentLocation.area)
-        //$(".location-area").text(player.currentLocation.area)
+
         $(".player-image > img").attr("src", player.img)
         $(".player-name").text(player.name)
         $(".player-level").text("Level " + player.level)
         $(".player-XP").text(player.XP.current + " / " + player.XP.toNext)
         $(".player-race").text(player.race + " " + player.job)
-        //$(".player-job").text(playerjob)
         $(".player-blessing").text(player.blessing)
+
+        $("#NPC-image > img").attr("src", player.currentNPC.img)
+        $("#NPC-name").text(player.currentNPC.name)
+        $("#NPC-race-class").text(player.currentNPC.race + " " + player.currentNPC.job)
+        $("#NPC-level").text("Level " + player.currentNPC.level)
+        $("#spoken-text").text(display.nextParagraph)
     }
 
     // RUN TIME CODE
 
-    var item = createItemObject(MILK_BOTTLE)
+    console.log(farmerJoe)
     console.log(player)
     updateDisplay()
 })
