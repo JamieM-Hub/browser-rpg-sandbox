@@ -294,6 +294,15 @@ $(document).ready(function () {
     processCommand = () => {
         let command = $("#command").val().toLowerCase()
 
+        // check command for all location objects
+        // -> output narration
+        // else check command against command functions for all locations
+        // -> process function
+        // else check command against global preset responses
+        // -> output narration
+        // else output defalt narration "i don't understand that command" etc
+
+        // if location has a narration for command, print command
         if (player.currentLocation.navigation[command] != null) {
             display.narratorResponse = player.currentLocation.navigation[command]
         }
@@ -407,13 +416,15 @@ $(document).ready(function () {
             $("#NPC-name").text("")
             $("#NPC-race-class").text("")
             $("#NPC-level").text("")
+            $("#spoken-text").text(""display.nextParagraph"")
         } else {
             $("#NPC-image > img").attr("src", player.currentNPC.img)
             $("#NPC-name").text(player.currentNPC.name)
             $("#NPC-race-class").text(player.currentNPC.race + " " + player.currentNPC.job)
             $("#NPC-level").text("Level " + player.currentNPC.level)
+            $("#spoken-text").text(display.nextParagraph)
         }
-        $("#spoken-text").text(display.nextParagraph)
+        
         $("#narrator").text(display.narratorResponse)
 
         $("#left-hand").find("img").attr("src", player.equipped["left-hand"].img)
